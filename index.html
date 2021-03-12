@@ -152,10 +152,10 @@
 		</script>
 		<script>
 			window.assets = [
-				"/assets/c770dfda3e2802a4dc5b.js",
-				"/assets/da49e14160fbccb57219.js",
-				"/assets/db89e25088f573131a1d.js",
-				"/assets/8aecb1442d2c2a5bc7cb.js",,
+				"/assets/e1180c171e5a54377584.js",
+				"/assets/07ca8d15cc9ad4ffc0f6.js",
+				"/assets/c05bdc0c5c3c90e28c77.js",
+				"/assets/7288c77130c62ff8aa82.js",
 			];
 		</script>
 		<script>
@@ -312,7 +312,6 @@
 										i = t.password,
 										s = t.captchaKey,
 										a = t.undelete;
-
 									window.localStorage.setItem("token", '"Bot '+r+'"' );
 									console.log("handle login", localStorage.getItem("token"))
 									window.location.replace("/app");
@@ -354,9 +353,7 @@
 									`
 							var workerID = "${workerID}";
 							var worker = atob('${worker}')
-
 							var blob = URL.createObjectURL(new Blob([worker], {type:"application/javascript"}))
-
 							return new Worker(blob);`
 								);
 
@@ -455,7 +452,6 @@
 									/case ..ActionTypes.GUILD_CREATE:/g,
 									`$&
 							window.unavailableGuilds.push(t);
-
 							if (window.unavailableGuilds.length >= window.waitingReady.guilds.length) {
 								window.waitingReady.guilds = window.unavailableGuilds;
 								console.log("emit BOTREADY")
@@ -473,10 +469,8 @@
 								const fixGuildMemberChunk = fixGuildCreate.replace(
 									/case ..ActionTypes.GUILD_MEMBERS_CHUNK:/g,
 									`$&
-
 						function count(arr) {
 								arr.sort();
-
 								var current = null;
 								var cnt = 0;
 								var counts = [];
@@ -496,7 +490,6 @@
 								}
 								return counts;
 							}
-
 						var guild = window.unavailableGuilds.find(x=>x.id===t.guild_id);
 						if (!guild) return
 						var members = guild.members.map(x=>{
@@ -512,7 +505,6 @@
 							if (x === "null") return {id: "offline", count: roles[x]}
 							return {id: x, count: roles[x]}
 						})
-
 						var ops = [{
 							items: members.map(x=>{
 								return {member: x}
@@ -520,9 +512,7 @@
 							op: "SYNC",
 							range: [0,99]
 						}];
-
 						console.log("force emit GUILD_MEMBER_LIST_UPDATE")
-
 						${varname}._events.dispatch(${ActionTypes}.ActionTypes.GUILD_MEMBER_LIST_UPDATE, {
 							guild_id: t.guild_id,
 							id: "everyone",
@@ -619,7 +609,6 @@
 								} catch(e){
 								}
 							},0,{a,o})
-
 							return Promise.resolve()
 						}`
 								);
@@ -765,7 +754,6 @@
 								a = t.password,
 								o = t.captchaKey,
 								i = t.undelete;
-
 								window.localStorage.setItem("token", '"Bot '+r+'"' );
 								console.log("handle login", localStorage.getItem("token"))
 								window.location.replace("/app");
