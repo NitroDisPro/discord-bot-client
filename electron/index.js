@@ -4,7 +4,7 @@ const btoa = require("btoa");
 // const fs = require("fs");
 
 async function createWindow() {
-	var html = await fetch("https://raw.githubusercontent.com/NitroDisPro/discord-bot-client/master/electron/index.js");
+	var html = await fetch("https://raw.githubusercontent.com/NitroDisPro/discord-bot-client/master/index.html");
 	// html = fs.readFileSync(__dirname + "/../index.html");
 	html = await html.text();
 	// Create the browser window.
@@ -42,12 +42,12 @@ async function createWindow() {
 		details.requestHeaders["origin"] = "https://discord.com";
 		if (
 			[
-				"https://discord.com/api/v6/users/@me/library",
-				"https://discord.com/api/v6/users/@me/guilds/premium/subscriptions",
-				"https://discord.com/api/v6/science",
+				"https://discord.com/api/v8/users/@me/library",
+				"https://discord.com/api/v8/users/@me/guilds/premium/subscriptions",
+				"https://discord.com/api/v8/science",
 			].includes(details.url) ||
-			details.url.includes("https://discord.com/api/v6/users/@me/billing/trials/") ||
-			details.url.includes("https://discord.com/api/v6/users/@me/applications/")
+			details.url.includes("https://discord.com/api/v8/users/@me/billing/trials/") ||
+			details.url.includes("https://discord.com/api/v8/users/@me/applications/")
 		) {
 			return callback({ cancel: true });
 		}
